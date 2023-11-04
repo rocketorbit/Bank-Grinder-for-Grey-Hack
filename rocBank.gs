@@ -123,7 +123,7 @@ end function //Generate random IP
 
 crack = function(hsh)
     if hashMap.hasIndex(hsh) then return hashMap[hsh]
-    return null //throw away value that can not be instantly deciphered, if you want the value, comment out this line.
+    //return null //throw away value that can not be instantly deciphered, if you want the value, comment out this line.
     hsh = crypto.decipher(hsh)
     print("<color=orange>" + hsh + "</color>")
     return hsh
