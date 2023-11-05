@@ -121,10 +121,14 @@ rndIp = function
     return ip0 + "." + ip1 + "." + floor((rnd * 256)) + "." + floor((rnd * 256)) //Generate a random ip, doesnt start with 1
 end function //Generate random IP
 
+timeDecipher = null
+
 crack = function(hsh)
     if hashMap.hasIndex(hsh) then return hashMap[hsh]
-    //return null //throw away value that can not be instantly deciphered, if you want the value, comment out this line.
+    if timeDecipher and timeDecipher > 2 then return null //throw away value that can not be instantly deciphered, if you want the value, comment out this line.
+    startTime = time
     hsh = crypto.decipher(hsh)
+    globals.timeDecipher = time - startTime
     print("<color=orange>" + hsh + "</color>")
     return hsh
 end function
